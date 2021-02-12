@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h1>{{message}}</h1>
+<!--    下面一种不建议 不够灵活 会覆盖里面的内容-->
+    <h1 v-text="message"></h1>
+</div>
+<script src="../com/vue.js"></script>
+<script>
+    const app =new Vue({
+        el:'#app',
+        data:{
+            message:'你好啊',
+        }
+    })
+</script>
+
+</body>
+</html>

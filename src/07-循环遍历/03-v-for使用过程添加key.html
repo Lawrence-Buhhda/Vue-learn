@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+<!--        绑定需要一一对应-->
+        <li v-for="item in letters" :key="item">{{item}}</li>
+    </ul>
+</div>
+<script src="../com/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data:{
+            letters:['A','B','C','D','E']
+        }
+    })
+</script>
+</body>
+</html>

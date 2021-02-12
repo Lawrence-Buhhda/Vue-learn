@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--<cpn>-->
+<!--   <h2>我是标题</h2>-->
+<!--   <p>我是内容，哈哈哈哈哈</p>-->
+<!--   <p>我是内容，呵呵呵呵呵呵呵</p>-->
+<!--</cpn>-->
+
+<div id="app">
+<!--    3.使用组件 一定要有v-bind 不然会把movies当成字符串 赋给cmovies-->
+    <cpn v-bind:cmovies="movies" :cmessage="message"></cpn>
+<!--    <cpn v-bind:cmovies="movies" ></cpn>-->
+<!--    <cpn  :cmessage="message"></cpn>-->
+</div>
+
+
+<template id="cpn">
+    <div>
+        <ul>
+            <li v-for="m in cmovies">{{m}}</li>
+        </ul>
+        <h2>{{cmessage}}</h2>
+    </div>
+</template>
+<script src="../com/vue.js"></script>
+<script>
+//父传子:props
+const cpn = {
+    template:'#cpn',
+    // props:['cmovies','cmessage'],
+    props:{
+        //1.类型的限制
+      // cmovies:Array,
+      // cmessage:String,
+
+      //2.提供一些默认值,以及必传值
+      cmessage  :{
+          type:String,
+          default:12,
+          required:true,
+      } ,
+        //类型是对象或者数组时，默认值必须是一个函数
+        cmovies:{
+          type:Array,
+          default(){
+              return []   //vue2.5.17以下
+          }
+        }
+    },
+    data(){
+        return{
+
+        }
+    },
+    methods:{
+
+    }
+}
+
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:'你好啊',
+            movies:['爱上','一个人','是','痛苦的']
+        },
+        components:{
+            cpn
+        }
+    })
+</script>
+</body>
+</html>

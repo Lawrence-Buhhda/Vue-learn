@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <cpn><span slot="center">呵呵</span></cpn>
+
+    <cpn><button slot="left">呵呵</button></cpn>
+
+</div>
+
+<template id="cpn">
+    <div>
+        <slot name="left"><span>左边</span></slot>
+        <slot name="center"><span>中间</span></slot>
+        <slot name="right"><span>右边</span></slot>
+
+    </div>
+</template>
+<script src="../com/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:'#app',//用于挂载要管理的元素
+        data:{ //定义数据
+            message:'你好啊，李银河！',
+        },
+        components:{
+            cpn:{
+                template:'#cpn'
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

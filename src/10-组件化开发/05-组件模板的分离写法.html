@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--<cpn>-->
+<!--   <h2>我是标题</h2>-->
+<!--   <p>我是内容，哈哈哈哈哈</p>-->
+<!--   <p>我是内容，呵呵呵呵呵呵呵</p>-->
+<!--</cpn>-->
+
+<div id="app">
+<!--    3.使用组件-->
+    <cpn></cpn>
+
+</div>
+
+<!--1.-->
+<!--<script type="text/x-template" id="cpn">-->
+<!--<div>-->
+<!--    <h2>我是标题</h2>-->
+<!--    <p>我是内容哈哈哈</p>-->
+<!--</div>-->
+<!--</script>-->
+
+<!--2.template标签-->
+<template id="cpn">
+    <div>
+        <h2>我是标题</h2>
+        <p>我是内容哈哈哈</p>
+    </div>
+</template>
+<script src="../com/vue.js"></script>
+<script>
+
+    //ES6 `` 表示字符串 可以换行 不用+
+
+    //2.注册一个全局组件
+    Vue.component('cpn',{
+        template:`#cpn`
+    })
+    //3.使用组件
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:'你好啊',
+        }
+    })
+</script>
+</body>
+</html>

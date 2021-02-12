@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--<cpn>-->
+<!--   <h2>我是标题</h2>-->
+<!--   <p>我是内容，哈哈哈哈哈</p>-->
+<!--   <p>我是内容，呵呵呵呵呵呵呵</p>-->
+<!--</cpn>-->
+
+<div id="app">
+<!--    3.使用组件-->
+    <my-cpn></my-cpn>
+    <cp2></cp2>
+</div>
+<script src="../com/vue.js"></script>
+<script>
+
+    //ES6 `` 表示字符串 可以换行 不用+
+
+    //1.创建组件构造器对象  必须要有个根元素包裹
+    // const cpnC = Vue.extend()
+
+    //2.注册组件(全局)
+    Vue.component('my-cpn',{
+        template:
+            `<div>
+             <h2>我是标题</h2>
+             <p>我是内容，哈哈哈哈哈</p>
+             <p>我是内容，呵呵呵呵呵呵呵</p>
+             </div>`
+    })
+    //3.使用组件
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:'你好啊',
+        },components:{
+            'cp2':{
+                template:
+                    `<div>
+             <h2>我是标题</h2>
+             <p>我是内容，哈哈哈哈哈</p>
+             <p>我是内容，呵呵呵呵呵呵呵</p>
+             </div>`
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+    <cpn :c-info="info" :child-my-message="message"></cpn>
+</div>
+
+<!-- vue 不支持驼峰命名 如果props 驼峰命名 其他地方需要加 -小写 -->
+<template id="cpn">
+    <div>
+        <h2>{{ cInfo }}</h2>
+        <h2>{{ childMyMessage }}</h2>
+    </div>
+
+</template>
+<script src="../com/vue.js"></script>
+<script>
+    //父传子:props
+    const cpn = {
+        template: '#cpn',
+        props: {
+            cInfo: {
+                type: Object,
+                default() {
+                    return {}
+                }
+            },
+            childMyMessage: {
+                type: String,
+                default: ''
+            }
+        },
+        data() {
+            return {}
+        },
+        methods: {}
+    }
+
+    const app = new Vue({
+        el: '#app',
+        data: {
+            info: {
+                name: 'why',
+                age: 18,
+                height: 1.88,
+            },
+            message: '龙门'
+        },
+        components: {
+            cpn
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+<!--    3.使用组件-->
+<!--    每次返回一个对象-->
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+</div>
+
+
+<template id="cpn">
+    <div>
+        <h2>当前计数:{{counter}}</h2>
+        <button v-on:click="add">+</button>
+        <button @click="sub">-</button>
+    </div>
+</template>
+<script src="../com/vue.js"></script>
+<script>
+
+    //ES6 `` 表示字符串 可以换行 不用+
+
+    //2.注册一个全局组件
+    Vue.component('cpn',{
+        template:`#cpn`,
+        data(){//函数具有局部变量 作用域问题
+            return {
+                counter:0
+            }
+        },
+        methods: {
+            add: function () {
+                console.log('add被执行');
+                this.counter++;
+            }, sub: function () {
+                console.log('sub被执行');
+                this.counter--;
+            }
+        }
+    })
+    //3.使用组件
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:'你好啊',
+        }
+    })
+</script>
+<script>
+    function abc() {
+        return{
+            name:'why',
+            age:18
+        }
+    }
+    let obj1=abc()
+    let obj2=abc()
+    let obj3=abc()
+
+    obj1.name='kobe'  //不一样
+    console.log(obj2);
+    console.log(obj1)
+
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+   <cpn></cpn>
+
+    <cpn>
+<!--        <span>JavaScript</span>  会替换slot里面的内容-->
+<!--        <span v-for="item in pLanguages"></span> 在父组件中拿不到子组件中的pLanguages-->
+<!--        目的是获取子组件中的pLanguages-->
+        <template slot-scope="slot">
+            <span v-for="item in slot.data">{{item}}-</span><br/>
+            <span>{{slot.data.join(' - ')}}</span>
+        </template>
+    </cpn>
+</div>
+
+<template id="cpn">
+    <div>
+<!--        data这个属性 随便取-->
+        <slot :data="pLanguages">
+            <ul>
+                <li v-for="item in pLanguages">{{item}}</li>
+            </ul>
+        </slot>
+    </div>
+</template>
+<script src="../com/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:'#app',//用于挂载要管理的元素
+        data:{ //定义数据
+            message:'你好啊，李银河！',
+        },
+        components:{
+            cpn:{
+                template:'#cpn',
+                data(){
+                    return{
+                        pLanguages:['JavaScropt','C++','C#','Go','Rust']
+                    }
+                }
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

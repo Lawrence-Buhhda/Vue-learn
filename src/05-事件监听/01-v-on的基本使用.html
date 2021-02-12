@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--model-->
+<div id="app">
+    <h2>当前计数：{{counter}}</h2>
+<!--    <button v-on:click="counter++">+</button>-->
+<!--    <button v-on:click="counter&#45;&#45;">+</button>-->
+    <button v-on:click="add">+</button>
+    <button @click="sub">-</button>
+</div>
+<script src="../com/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data:{
+            counter:0
+        },
+        methods: {
+            add(){
+                console.log('add被执行');
+                this.counter++;
+            },
+            sub() {
+                console.log('sub被执行');
+                this.counter--;
+            }
+        }
+    })
+    //1.拿button元素
+
+    //2.添加监听事件
+</script>
+</body>
+</html>
