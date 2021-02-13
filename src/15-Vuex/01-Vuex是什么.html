@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../com/vue.js"></script>
+<script>
+// 所有组件都继自Vue的原型
+// 但这不是响应式的
+    const shareObj ={
+        name:'why'
+    }
+    Vue.prototype.shareObj = shareObj
+
+    Vue.component('cpn1',{
+        this.shareObj.name
+    })
+
+    Vue.component('cpn2',{
+
+    })
+    const app = new Vue({
+        el:'#app'
+    })
+</script>
+</body>
+</html>

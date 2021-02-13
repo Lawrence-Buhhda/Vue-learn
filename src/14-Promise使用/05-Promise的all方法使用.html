@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //有两个请求 要判断两个请求都请求成功才能继续下一步
+    //请求一：
+    let isResult1 = false;
+    let isResult2 = false;
+    $ajax({
+        url:'',
+        success:function () {
+            console.log('结果1')
+            isResult1 = true
+            handleResult()
+        }
+    })
+    //请求二：
+    $ajax({
+        url:'',
+        success:function () {
+            console.log('结果2')
+            isResult2 = true
+            handleResult()
+        }
+    })
+
+    function handleResult() {
+        if(isResult1 && isResult2){
+
+        }
+    }
+
+    Promise.all([
+        new Promise((resolve, reject) => {
+            $ajax({
+                url:'url1',
+                success:function (data) {
+                   resolve(data)
+                }
+            })
+        }),
+        new Promise((resolve, reject) => {
+            $ajax({
+                url:'url2',
+                success:function (data) {
+                    resolve(data)
+                }
+            })
+        }),
+    ]).then(results =>{
+        console.log(results[0])
+        console.log(results[1])
+    })
+</script>
+</body>
+</html>
